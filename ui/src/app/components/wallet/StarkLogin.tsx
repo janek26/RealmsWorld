@@ -13,9 +13,8 @@ import { useConnectors, useAccount, useNetwork } from "@starknet-react/core";
 import { useState, useEffect } from "react";
 import { formatBigInt } from "@/app/lib/utils";
 import { useWalletsProviderContext } from "@/app/providers/WalletsProvider";
-import Starknet from "@/icons/starknet.svg";
-import Lords from "@/icons/lords.svg";
-import EthereumLogo from "@/icons/ethereum.svg";
+
+import Image from "next/image";
 function StarkLogin() {
   const { connect, connectors, disconnect } = useConnectors();
   const { address, status } = useAccount();
@@ -27,7 +26,12 @@ function StarkLogin() {
       <div className=" border rounded p-2 pt-4 border-white/20">
         <div className="flex mb-3 justify-between">
           <div className="flex">
-            <Starknet className="w-8 px-1" />
+            <Image
+              width={12}
+              height={12}
+              src="/icons/starknet.svg"
+              alt="Ethereum"
+            />{" "}
             <div className="self-center"> {chain?.name}</div>
           </div>
           <div>
@@ -45,13 +49,25 @@ function StarkLogin() {
         <div className="grid grid-cols-2 align-items-center space-x-3">
           <div className="px-4 pt-4 pb-2 border rounded border-white/20">
             <div className="text-2xl flex">
-              <EthereumLogo className="w-4 mr-2" />
+              <Image
+                width={12}
+                height={12}
+                className="mr-3"
+                src="/icons/ethereum.svg"
+                alt="Ethereum"
+              />{" "}
               {formatBigInt(balances.l2.eth, 3)}
             </div>
           </div>
           <div className="px-4 pt-4 pb-2 border rounded   flex justify-between border-white/20">
             <div className="text-2xl flex">
-              <Lords className="w-6 fill-current pr-2" />
+              <Image
+                width={18}
+                height={18}
+                className="mr-3"
+                src="/icons/lords.svg"
+                alt="Ethereum"
+              />
               {balances.l2.lords && balances.l2.lords > 0
                 ? formatBigInt(balances.l2.lords, 3)
                 : 0}
@@ -76,7 +92,13 @@ function StarkLogin() {
           size={"lg"}
           variant={"outline"}
         >
-          <Starknet className="w-8 px-1" /> Connect Starknet Wallet
+          <Image
+            width={12}
+            height={12}
+            src="/icons/starknet.svg"
+            alt="Ethereum"
+          />{" "}
+          Connect Starknet Wallet
         </Button>
       </DialogTrigger>
       <DialogContent className="w-full">

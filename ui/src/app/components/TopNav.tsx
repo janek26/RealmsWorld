@@ -13,8 +13,7 @@ import {
 } from "@starknet-react/core";
 import { useAccount as useL1Account } from "wagmi";
 import { shortenHex } from "@/functions/utils";
-import EthereumLogo from "@/icons/ethereum.svg";
-import StarknetLogo from "@/icons/starknet.svg";
+
 import { Account } from "../bridge/Account";
 import Link from "next/link";
 import { Compass, Menu } from "lucide-react";
@@ -27,6 +26,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/app/components/ui/dialog";
+import Image from "next/image";
 
 export const TopNav = () => {
   const { scrollY } = useScroll();
@@ -113,12 +113,24 @@ export const TopNav = () => {
               <Button variant={"outline"} className="flex gap-x-2">
                 {l1Address && isDefinitelyConnected ? (
                   <>
-                    <EthereumLogo className="mx-2 w-5 h-5" />
+                    <Image
+                      width={13}
+                      height={13}
+                      className="mr-2"
+                      src="/icons/ethereum.svg"
+                      alt="ethereum"
+                    />
                     {shortenHex(l1Address)}
                   </>
                 ) : (
                   <span className="flex">
-                    <EthereumLogo className="mx-2 w-5 h-5" />
+                    <Image
+                      width={13}
+                      height={13}
+                      className="mr-2"
+                      src="/icons/ethereum.svg"
+                      alt="ethereum"
+                    />
                     Connect
                   </span>
                 )}
@@ -126,12 +138,24 @@ export const TopNav = () => {
               <Button variant={"outline"} className="flex gap-x-2">
                 {l2Address && isConnected ? (
                   <>
-                    <StarknetLogo className="mx-2 w-5 h-5" />
+                    <Image
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                      src="/icons/starknet.svg"
+                      alt="starknet"
+                    />
                     {shortenHex(l2Address)}
                   </>
                 ) : (
                   <span className="flex">
-                    <StarknetLogo className="mx-2 w-5 h-5" />
+                    <Image
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                      src="/icons/starknet.svg"
+                      alt="ethereum"
+                    />
                     Connect
                   </span>
                 )}

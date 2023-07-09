@@ -32,21 +32,20 @@ export default function RootLayout({
       <body
         className={`bg-theme-gray ${inconsolata.variable} ${karla.variable} text-white/70`}
       >
-
         <Provider>
           <WalletsProvider>
             <ToastProvider>
-              <TransferLogProvider>
-                <UIContextProvider>
-                  <main className="flex flex-wrap min-h-screen">
-                    <Sidebar />
-                    <div className="z-10 flex flex-col flex-grow">
-                      <TopNav />
-                      <div className="flex-grow">{children}</div>
-                    </div>
-                  </main>
-                </UIContextProvider>
-              </TransferLogProvider>
+              {/*<TransferLogProvider>*/}
+              <UIContextProvider>
+                <main className="flex flex-wrap min-h-screen">
+                  <Sidebar />
+                  <div className="z-10 flex flex-col flex-grow">
+                    <TopNav />
+                    <div className="flex-grow">{children}</div>
+                  </div>
+                </main>
+              </UIContextProvider>
+              {/*</TransferLogProvider>*/}
               <ToastViewport />
             </ToastProvider>
           </WalletsProvider>

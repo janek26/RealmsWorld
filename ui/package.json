@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build-client": "BRIDGE_SUBGRAPH_URL=https://api.thegraph.com/subgraphs/name/redbeardeth/starknet-bridge-goerli APIBARA_URL=https://resonant-badge-production.up.railway.app/goerli-graphql graphclient build --dir src",
+    "dev": "next dev --turbo",
+    "build-client": "graphclient build --dir src",
     "build": "yarn build-client && next build",
     "start": "next start",
     "lint": "next lint",
@@ -16,8 +16,8 @@
     "@emotion/styled": "^11.11.0",
     "@habx/apollo-multi-endpoint-link": "^2.9.0",
     "@headlessui/react": "^1.7.15",
-    "@mui/material": "^5.13.6",
-    "@mui/styles": "^5.13.2",
+    "@mui/material": "^5.13.7",
+    "@mui/styles": "^5.13.7",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",
@@ -48,7 +48,7 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@react-three/drei": "^9.58.4",
     "@react-three/fiber": "^8.12.0",
-    "@reservoir0x/reservoir-kit-ui": "^1.2.1",
+    "@reservoir0x/reservoir-kit-ui": "^1.2.2",
     "@starknet-react/core": "^1.0.2",
     "@starkware-industries/commons-js-enums": "^1.2.0",
     "@starkware-industries/commons-js-utils": "^1.2.2",
@@ -63,12 +63,12 @@
     "cmdk": "^0.2.0",
     "connectkit": "^1.4.0",
     "cross-env": "^7.0.3",
-    "framer-motion": "^10.12.17",
+    "framer-motion": "^10.12.18",
     "get-starknet": "3.0.1",
     "graphql": "^16.7.1",
-    "lucide-react": "^0.256.0",
-    "next": "13.4.8",
-    "postcss": "^8.4.24",
+    "lucide-react": "^0.259.0",
+    "next": "13.4.9",
+    "postcss": "^8.4.25",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
@@ -81,13 +81,13 @@
     "three": "^0.150.1",
     "typescript": "5.1.3",
     "use-deep-compare-effect": "^1.8.1",
-    "viem": "~1.2.9",
-    "wagmi": "~1.3.7"
+    "viem": "~1.2.10",
+    "wagmi": "~1.3.8"
   },
   "devDependencies": {
     "@graphprotocol/client-cli": "^3.0.0",
     "@svgr/webpack": "^8.0.1",
-    "eslint": "8.43.0",
-    "eslint-config-next": "13.4.7"
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.9"
   }
 }

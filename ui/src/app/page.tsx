@@ -4,9 +4,8 @@ import { GameCard } from "./components/GameCard";
 import { CollectionCard } from "./components/CollectionCard";
 import { getCollections } from "./lib/reservoir/getCollections";
 
-import DojoDark from "@/icons/mark-dark.svg"
-import Starknet from "@/icons/starknet.svg"
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Home() {
   const data = await getCollections([
@@ -33,9 +32,24 @@ export default async function Home() {
             Realms <br /> Autonomous <br /> World.
           </h1>
           <div className="flex my-2">
-            <span className="align-center">Powered by </span><Link href={'https://dojoengine.org/'}><DojoDark className="w-10 px-1" /></Link>
-
-            <span className="px-1">on</span>  <Link href={'https://www.starknet.io/en'}><Starknet className="w-8 px-1" /></Link>
+            <span className="align-center">Powered by </span>
+            <Link href={"https://dojoengine.org/"}>
+              <Image
+                width={35}
+                height={35}
+                src="/icons/mark-dark.svg"
+                alt="Dojo"
+              />
+            </Link>
+            <span className="px-1">on</span>{" "}
+            <Link href={"https://www.starknet.io/en"}>
+              <Image
+                width={24}
+                height={24}
+                src="/icons/starknet.svg"
+                alt="Starknet"
+              />
+            </Link>
           </div>
 
           <hr className="border" />

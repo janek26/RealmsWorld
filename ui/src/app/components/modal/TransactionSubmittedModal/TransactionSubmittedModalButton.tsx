@@ -1,9 +1,7 @@
 import { openInNewTab, evaluate } from "@starkware-industries/commons-js-utils";
 import PropTypes from "prop-types";
 import React from "react";
-import EtherscanLogo from "@/icons/etherscan.svg";
-import StarkScanLogo from "@/icons/starkscan.svg";
-import VoyagerLogo from "@/icons/voyager.svg";
+
 import {
   ETHERSCAN_TX_URL,
   VOYAGER_TX_URL,
@@ -13,7 +11,7 @@ import {
 
 import { Button } from "../../ui/button";
 import { ActionType } from "@/constants/transferSteps";
-
+import Image from "next/image";
 const TransactionSubmittedModalButton = ({
   transfer,
   buttonProps,
@@ -32,12 +30,26 @@ const TransactionSubmittedModalButton = ({
       {
         name: "Etherscan",
         url: ETHERSCAN_TX_URL(l1hash),
-        logo: <EtherscanLogo className="w-5 h-5" />,
+        logo: (
+          <Image
+            width={12}
+            height={12}
+            src="/icons/etherscan.svg"
+            alt="Starkscan"
+          />
+        ),
       },
       {
         name: "StarkScan",
         url: STARKSCAN_ETH_TX_URL(l1hash),
-        logo: <StarkScanLogo className="w-5 h-5" />,
+        logo: (
+          <Image
+            width={12}
+            height={12}
+            src="/icons/starkscan.svg"
+            alt="Starkscan"
+          />
+        ),
       },
     ];
   }
@@ -47,12 +59,26 @@ const TransactionSubmittedModalButton = ({
       {
         name: "Voyager",
         url: VOYAGER_TX_URL(l2hash),
-        logo: <VoyagerLogo />,
+        logo: (
+          <Image
+            width={12}
+            height={12}
+            src="/icons/voyager.svg"
+            alt="Starkscan"
+          />
+        ),
       },
       {
         name: "StarkScan",
         url: STARKSCAN_TX_URL(l2hash),
-        logo: <StarkScanLogo />,
+        logo: (
+          <Image
+            width={12}
+            height={12}
+            src="/icons/starkscan.svg"
+            alt="Starkscan"
+          />
+        ),
       },
     ];
   }

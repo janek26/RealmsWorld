@@ -21,12 +21,12 @@ import {
 } from "lucide-react";
 import { STARKSCAN_TX_URL, STARKSCAN_ETH_TX_URL } from "@/constants/env";
 import { Button } from "./ui/button";
-import LordsIcon from "@/icons/lords.svg";
 import { cn } from "../lib/utils";
 import { DepositEvent, WithdrawalEvent } from "@/.graphclient";
 import { formatEther } from "viem";
 import { ChainType, tokens } from "@/constants/tokens";
 import { useNetwork } from "@starknet-react/core";
+import Image from "next/image";
 
 export const TransferLog = ({
   transfer,
@@ -153,7 +153,13 @@ export const TransferLog = ({
           }`}</div>
           <div className="text-2xl font-semibold flex">
             {transfer.amount ? amount : formatEther(amount || 0)}
-            <LordsIcon className="fill-white w-5 h-5 ml-3 self-center" />
+            <Image
+              width={12}
+              height={12}
+              src="/icons/lords.svg"
+              alt="Lords"
+              className="fill-white w-5 h-5 ml-3 self-center"
+            />
           </div>
         </div>
       </div>

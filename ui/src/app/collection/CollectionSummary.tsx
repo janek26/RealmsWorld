@@ -18,27 +18,29 @@ export default async function CollectionSummary({ address }: any) {
       value: `https://etherscan.io/address/${collection.id}`,
     },
     {
-      icon: <Discord className="w-[28px] h-[28px] fill-white" />,
+      icon: (
+        <Image width={28} height={28} src="/icons/discord.svg" alt="Discord" />
+      ),
       value: collection.discordUrl,
     },
-    { icon: <Twitter />, value: 'https://twitter.com/' + collection.twitterUsername },
+    {
+      icon: <Twitter />,
+      value: "https://twitter.com/" + collection.twitterUsername,
+    },
     { icon: <Globe />, value: collection.externalUrl },
   ];
 
   const statistics = [
     {
-
       value: collection?.floorSale["1day"],
       title: "Top Offer",
     },
     {
-
       value: formatEther(collection.floorAsk.price.amount.raw),
       title: "Floor",
     },
     { value: collection.onSaleCount, title: "Listed" },
     {
-
       value: collection.volume.allTime.toFixed(2),
       title: "Total Volume",
     },
@@ -112,7 +114,9 @@ export default async function CollectionSummary({ address }: any) {
                 key={index}
                 className="px-4 py-2 lg:px-5 bg-black/40  border-black"
               >
-                <div className="text-xs font-sans-serif mb-1 text-white/40">{statistic.title}</div>
+                <div className="text-xs font-sans-serif mb-1 text-white/40">
+                  {statistic.title}
+                </div>
                 <div className="text-sm lg:text-xl">{statistic.value}</div>
               </div>
             );

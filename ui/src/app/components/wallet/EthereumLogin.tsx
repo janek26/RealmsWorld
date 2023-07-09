@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useEnsName,
-} from "wagmi";
+import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 import { Button } from "@/app/components/ui/button";
 import { shortenHex } from "@/functions/utils";
 import { LogOut } from "lucide-react";
@@ -13,8 +8,7 @@ import { ConnectKitButton } from "connectkit";
 import { useNetwork } from "wagmi";
 import { useWalletsProviderContext } from "@/app/providers/WalletsProvider";
 import { formatBigInt } from "@/app/lib/utils";
-import EthereumLogo from "@/icons/ethereum.svg";
-import Lords from "@/icons/lords.svg";
+import Image from "next/image";
 function EthereumLogin() {
   const { address, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
@@ -31,7 +25,14 @@ function EthereumLogin() {
       <div className="border p-2 rounded border-white/20">
         <div className="flex mb-3 justify-between">
           <div className="flex text-xl">
-            <EthereumLogo className="w-3 mx-2" /> <div className="self-center">{chain?.name}</div>
+            <Image
+              width={12}
+              height={12}
+              src="/icons/ethereum.svg"
+              alt="Ethereum"
+            />
+
+            <div className="self-center">{chain?.name}</div>
           </div>
           <div>
             <Button
@@ -46,24 +47,41 @@ function EthereumLogin() {
         </div>
         <div className="grid grid-cols-2 align-items-center space-x-3">
           <div className="px-4 pt-4 pb-2 border rounded flex justify-between border-white/20">
-
             <div className="text-2xl flex">
-              <EthereumLogo className="w-4 mr-2" />{balances.l1.eth ? formatBigInt(balances.l1.eth, 3) : 0}
+              <Image
+                width={12}
+                height={12}
+                className="mr-3"
+                src="/icons/ethereum.svg"
+                alt="Ethereum"
+              />{" "}
+              {balances.l1.eth ? formatBigInt(balances.l1.eth, 3) : 0}
             </div>
-
-
           </div>
           <div className="px-4 pt-4 pb-2 border rounded  flex justify-between border-white/20">
-
             <div className="text-2xl flex">
-              <Lords className="w-6 fill-current pr-2" />{balances.l1.lords && balances.l1.lords > 0 ? formatBigInt(balances.l1.lords, 3) : 0}
-
+              <Image
+                width={18}
+                height={18}
+                className="mr-3"
+                src="/icons/lords.svg"
+                alt="Lords"
+              />
+              {balances.l1.lords && balances.l1.lords > 0
+                ? formatBigInt(balances.l1.lords, 3)
+                : 0}
             </div>
-            <Button href="/bridge" size={'xs'} variant={'subtle'} className="self-center">Bridge</Button>
+            <Button
+              href="/bridge"
+              size={"xs"}
+              variant={"subtle"}
+              className="self-center"
+            >
+              Bridge
+            </Button>
           </div>
         </div>
       </div>
-
     );
   return (
     <div className="self-center w-full">
@@ -83,7 +101,16 @@ function EthereumLogin() {
                   ) : (
                     <>
                       <span className="normal-case flex">
-                        <EthereumLogo className="w-6 px-1" />  <span className="self-center pl-2">Connect Ethereum Wallet</span>
+                        <Image
+                          width={12}
+                          height={12}
+                          className="mr-3"
+                          src="/icons/ethereum.svg"
+                          alt="Ethereum"
+                        />{" "}
+                        <span className="self-center pl-2">
+                          Connect Ethereum Wallet
+                        </span>
                       </span>
                       {isConnecting && (
                         <div className="right-0 absolute mr-8">
