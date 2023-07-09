@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build-client": "graphclient build --dir src",
-    "build": "yarn build-client && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen --config config.yml"
