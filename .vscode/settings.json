@@ -17,5 +17,8 @@
   ],
   "deno.enable": false,
   "deno.lint": false,
-  "deno.unstable": false
+  "deno.unstable": false,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
 }
