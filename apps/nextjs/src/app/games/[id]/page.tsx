@@ -26,7 +26,7 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: { id: string } }) {
   const game = games.find((game) => game.id === params.id);
 
-  const dirRelativeToPublicFolder = `games/${params.id}/screenshots`;
+  const dirRelativeToPublicFolder = `/games/${params.id}/screenshots`;
   const dir = path.resolve("public", dirRelativeToPublicFolder);
   const screenshotFiles = await fs.readdir(
     process.cwd() + dirRelativeToPublicFolder,
