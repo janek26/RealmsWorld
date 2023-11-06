@@ -25,7 +25,16 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { id: string } }) {
   const game = games.find((game) => game.id === params.id);
-  const { serverRuntimeConfig } = getConfig();
+
+  const dirRelativeToPublicFolder = `games/${params.id}/screenshots`;
+  const dir = path.resolve("public", dirRelativeToPublicFolder);
+  const screenshotFiles = await fs.readdir(
+    process.cwd() + dirRelativeToPublicFolder,
+  );
+  const screenshotList = screenshotFiles.map((image, index) => ({
+    src: `/games/${params.id}/screenshots/${image}`,
+    alt: `${game?.name} Screenshot ${index}`,
+  }));
 
   const tabs = [
     {
@@ -49,23 +58,15 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   ];
 
-  const dirRelativeToPublicFolder = `public/games/${params.id}/screenshots`;
-  const dir = path.resolve(process.cwd(), dirRelativeToPublicFolder);
-  console.log(dir);
-  const screenshotFilenames = await fs.readdir(dir);
-
   return (
     <main className="container mx-auto px-4 ">
       <div className="my-4 grid min-h-[400px] grid-cols-1 gap-8 sm:grid-cols-2">
         {game && (
           <>
-            {screenshotFilenames && (
+            {screenshotList && (
               <Carousel
                 className="h-full"
-                images={screenshotFilenames.map((image) => ({
-                  src: `/games/${params.id}/screenshots/${image}`,
-                  alt: `${game.name} Screenshot`,
-                }))}
+                images={screenshotList}
                 autoPlay
                 showPreview
               />
