@@ -261,17 +261,19 @@ export interface TokenOwnership {
 }
 
 interface Link {
-  website: string;
-  discord: string;
-  twitter: string;
+  mainnet?: string;
+  testnet?: string;
+  discord?: string;
+  twitter?: string;
   whitepaper?: string;
+  homepage?: string;
 }
 
 interface CompatibleToken {
-  name: string;
+  id?: string;
   //contract: string;
-  icon: string;
-  image: string;
+  //icon: string;
+  //image: string;
 }
 
 interface ScreenShot {
@@ -282,15 +284,13 @@ interface ScreenShot {
 export interface Game {
   name: string;
   id: string;
-  icon: string;
-  status: string;
-  image: string;
   color: string;
+  status: string;
   chains: string[];
   description: string;
+  longform: string;
   links: Link;
   compatibleTokens: CompatibleToken[];
-  screenshots: ScreenShot[];
   homepage?: string;
 }
 

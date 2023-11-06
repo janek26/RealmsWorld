@@ -1,8 +1,11 @@
-export const games = [
+import type { Game } from "@/types";
+
+export const games: Game[] = [
   {
     name: "Realms: Eternum",
     id: "realms-adventurers",
-    image: "/backgrounds/dummy_background.png",
+    developer: "BiblioDAO",
+    genres: ["Economic Strategy", "PvP", "Raiding"],
     color: "#f5f5f5",
     status: "alpha",
     chains: ["Starknet"],
@@ -10,31 +13,24 @@ export const games = [
     longform:
       "Eternum is a strategy game that is built on StarkNet. It is a game of management and conquest, where players must build and defend their Realm to thrive. The game is governed by a set of rules that are enforced by the game's smart contracts.",
     links: {
-      website: "https://eternum.realms.world/",
+      homepage: "https://eternum.realms.world/",
       discord: "https://discord.gg/uQnjZhZPfu",
       twitter: "https://twitter.com/LootRealms",
       whitepaper: "https://scroll.bibliothecadao.xyz/",
     },
+    operatingSystems: ["Web Browser"],
+    lords: "Trade for resources",
     compatibleTokens: [
       {
-        name: "Realms",
-        contract: "realms",
-        icon: "realms.png",
-        image: "/backgrounds/warRoom.png",
+        id: "realms",
       },
     ],
-    screenshots: [
-      {
-        src: "/screenshots/eternum.png",
-        alt: "Realms: Eternum",
-      },
-    ],
-    homepage: "/homepages/realms-adventurers",
   },
   {
     name: "Loot Survivor",
     id: "loot-survivor",
-    image: "/backgrounds/dragon.png",
+    developer: "BiblioDAO",
+    genres: ["Play to Die", "Roguelike"],
     color: "#f5f5f5",
     status: "beta",
     chains: ["Starknet"],
@@ -47,32 +43,12 @@ export const games = [
       discord: "https://discord.gg/realmsworld",
       twitter: "https://twitter.com/LootRealms",
     },
+    operatingSystems: ["Web Browser"],
+    lords: "25 Per Adventurer",
     compatibleTokens: [
       {
-        name: "Golden Token",
-        contract: "goldenToken",
-        icon: "realms.png",
-        image: "/backgrounds/warRoom.png",
+        id: "goldenToken",
       },
     ],
-    screenshots: [
-      {
-        src: "/screenshots/LS.png",
-        alt: "Survivors",
-      },
-      {
-        src: "/screenshots/LS3.png",
-        alt: "Survivors",
-      },
-      {
-        src: "/screenshots/LS7.png",
-        alt: "Survivors",
-      },
-      {
-        src: "/screenshots/LS8.png",
-        alt: "Survivors",
-      },
-    ],
-    homepage: "/homepages/realms-adventurers",
   },
 ];

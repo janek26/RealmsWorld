@@ -55,15 +55,18 @@ export const Transfer = ({ action }: { action: string }) => {
               <h5 className="self-center">{networkName}</h5>
             </div>
           </div>
-          <TokenBalance
-            balance={
-              isWithdraw
-                ? balances.l2?.lords || BigInt(0)
-                : balances.l1?.lords || BigInt(0)
-            }
-            symbol="Lords"
-            isLoading={isWithdraw ? l2loading : false}
-          />
+          <div className="h-full justify-center pb-4 text-end">
+            <span className="text-sm text-white/50">Available Balance</span>
+            <TokenBalance
+              balance={
+                isWithdraw
+                  ? balances.l2?.lords || BigInt(0)
+                  : balances.l1?.lords || BigInt(0)
+              }
+              symbol="Lords"
+              isLoading={isWithdraw ? l2loading : false}
+            />
+          </div>
         </div>
       </>
     );
@@ -73,7 +76,7 @@ export const Transfer = ({ action }: { action: string }) => {
     return renderNetwork(
       "Ethereum",
       <EthereumLogo className="m-auto mt-1 h-6 w-6" />,
-      false,
+      action != "withdraw",
     );
   };
 
@@ -81,7 +84,7 @@ export const Transfer = ({ action }: { action: string }) => {
     return renderNetwork(
       "Starknet",
       <StarknetLogo className="m-auto mt-1 h-6 w-6" />,
-      true,
+      action == "withdraw",
     );
   };
   const renderTokenInput = () => {

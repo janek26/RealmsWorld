@@ -50,7 +50,6 @@ export const erc721TokensRouter = createTRPCRouter({
         whereFilter.push(gte(schema.erc721Tokens.token_id, 0));
       }
 
-      console.log(cursor, limit);
       const items = await ctx.db.query.erc721Tokens.findMany({
         limit: limit + 1,
         where: and(...whereFilter),

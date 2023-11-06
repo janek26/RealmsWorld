@@ -1,3 +1,5 @@
+import { promises as fs } from "fs";
+import path from "path";
 import type { Metadata } from "next";
 import { Button } from "@/app/_components/ui/button";
 import { Carousel } from "@/app/_components/ui/carousel";
@@ -45,15 +47,24 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   ];
 
+  const imageDirectory = path.join(
+    process.cwd(),
+    `/public/games/${params.id}/screenshots`,
+  );
+  const screenshotFilenames = await fs.readdir(imageDirectory);
+
   return (
     <main className="container mx-auto px-4 ">
       <div className="my-4 grid min-h-[400px] grid-cols-1 gap-8 sm:grid-cols-2">
         {game && (
           <>
-            {game.screenshots && (
+            {screenshotFilenames && (
               <Carousel
                 className="h-full"
-                images={game.screenshots}
+                images={screenshotFilenames.map((image) => ({
+                  src: `/games/${params.id}/screenshots/${image}`,
+                  alt: `${game.name} Screenshot`,
+                }))}
                 autoPlay
                 showPreview
               />
