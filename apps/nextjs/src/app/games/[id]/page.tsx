@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { Metadata } from "next";
+import getConfig from "next/config";
 import { Button } from "@/app/_components/ui/button";
 import { Carousel } from "@/app/_components/ui/carousel";
 import {
@@ -24,6 +25,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { id: string } }) {
   const game = games.find((game) => game.id === params.id);
+  const { serverRuntimeConfig } = getConfig();
 
   const tabs = [
     {
@@ -48,8 +50,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   ];
 
   const imageDirectory = path.join(
-    process.cwd(),
-    `/public/games/${params.id}/screenshots`,
+    serverRuntimeConfig.PROJECT_ROOT,
+    `./public/games/${params.id}/screenshots`,
   );
   const screenshotFilenames = await fs.readdir(imageDirectory);
 
