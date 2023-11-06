@@ -49,28 +49,16 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   ];
 
-  const imageDirectory = path.join(
-    serverRuntimeConfig.PROJECT_ROOT,
-    `./public/games/${params.id}/screenshots`,
-  );
-  const screenshotFilenames = await fs.readdir(imageDirectory);
+  const dirRelativeToPublicFolder = `/games/${params.id}/screenshots`;
+  const dir = path.resolve(process.cwd(), dirRelativeToPublicFolder);
+  console.log(dir);
+  const filenames = fs.readdir(dir);
 
   return (
     <main className="container mx-auto px-4 ">
       <div className="my-4 grid min-h-[400px] grid-cols-1 gap-8 sm:grid-cols-2">
         {game && (
           <>
-            {screenshotFilenames && (
-              <Carousel
-                className="h-full"
-                images={screenshotFilenames.map((image) => ({
-                  src: `/games/${params.id}/screenshots/${image}`,
-                  alt: `${game.name} Screenshot`,
-                }))}
-                autoPlay
-                showPreview
-              />
-            )}
             <div>
               <div className="flex space-x-2 uppercase">
                 {game?.chains.map((a, i) => <div key={i}>chain: {a}</div>)}

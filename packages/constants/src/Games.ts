@@ -11,18 +11,18 @@ interface Link {
   homepage?: string;
 }
 export interface Game {
-  name: string;
-  id: string;
+  name: string; // Display name of the game
+  id: string; // Game ID (used for URL must be kebab-case)
   color: string;
   status: string;
   developer: string;
   genres?: string[];
-  chains: ChainId[];
   description: string;
   longform: string;
   links: Link;
   operatingSystems?: string[];
-  lords?: string;
+  lords?: string; // How the Lords Token is used in the game
+  chains: ChainId[];
   collections?: Collections[];
   tokens?: Tokens[];
 }
